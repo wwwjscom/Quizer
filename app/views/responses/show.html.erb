@@ -1,0 +1,18 @@
+<p>
+  <b>Student:</b>
+  <%=h @response.student_id %>
+</p>
+
+<p>
+  <b>Question:</b>
+  <%=h @response.question_id %>
+</p>
+
+<p>
+  <b>Response:</b>
+  <%=h @response.response %>
+</p>
+
+
+<%= link_to 'Edit', edit_response_path(@response) %> |
+<%= link_to 'Back', responses_path %>
