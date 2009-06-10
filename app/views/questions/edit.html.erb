@@ -1,6 +1,6 @@
 <h1>Editing question</h1>
 
-<% form_for(@question) do |f| %>
+<% form_for(@question, :url => [@exam, @question]) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -20,5 +20,5 @@
   </p>
 <% end %>
 
-<%= link_to 'Show', @question %> |
-<%= link_to 'Back', questions_path %>
+<%= link_to 'Show', [@exam, @question] %> | 
+<%= link_to 'Back', exam_questions_path(@exam) %>

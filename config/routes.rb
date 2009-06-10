@@ -1,11 +1,12 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :responses
 
-  map.resources :questions
 
   map.resources :students
 
-  map.resources :exams
+  map.resources :exams do |e|
+    e.resources :questions
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
 

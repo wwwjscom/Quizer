@@ -2,7 +2,8 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.xml
   def index
-    @questions = Question.all
+    @exam = Exam.find(params[:exam_id])
+    @questions = @exam.question
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,6 +14,7 @@ class QuestionsController < ApplicationController
   # GET /questions/1
   # GET /questions/1.xml
   def show
+    @exam = Exam.find(params[:exam_id])
     @question = Question.find(params[:id])
 
     respond_to do |format|
@@ -24,6 +26,7 @@ class QuestionsController < ApplicationController
   # GET /questions/new
   # GET /questions/new.xml
   def new
+    @exam = Exam.find(params[:exam_id])
     @question = Question.new
 
     respond_to do |format|
@@ -34,18 +37,21 @@ class QuestionsController < ApplicationController
 
   # GET /questions/1/edit
   def edit
+    @exam = Exam.find(params[:exam_id])
     @question = Question.find(params[:id])
   end
 
   # POST /questions
   # POST /questions.xml
   def create
+    @exam = Exam.find(params[:exam_id])
     @question = Question.new(params[:question])
 
     respond_to do |format|
-      if @question.save
+      #if @question.save
+      if @exam.question << @question 
         flash[:notice] = 'Question was successfully created.'
-        format.html { redirect_to(@question) }
+        format.html { redirect_to(exam_questions_url) }
         format.xml  { render :xml => @question, :status => :created, :location => @question }
       else
         format.html { render :action => "new" }
@@ -78,7 +84,7 @@ class QuestionsController < ApplicationController
     @question.destroy
 
     respond_to do |format|
-      format.html { redirect_to(questions_url) }
+      format.html { redirect_to(exam_questions_url) }
       format.xml  { head :ok }
     end
   end
