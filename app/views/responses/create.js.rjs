@@ -1,0 +1,5 @@
+if another
+  page.replace("question", :partial => 'questions/ask', :response => @response, :question => @question, :exam => @exam)
+else
+  page.redirect_to '/exams'
+end

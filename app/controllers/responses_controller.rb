@@ -45,7 +45,17 @@ class ResponsesController < ApplicationController
     respond_to do |format|
       if @response.save
         flash[:notice] = 'Response was successfully created.'
-        format.html { redirect_to(@response) }
+
+        if request.xhr?
+          if (next_q_id = next_question?)
+            @exam = Exam.find(params[:exam_id])
+            @question = Question.find(next_q_id, :conditions => ['exam_id = ?', @exam])
+            @response = Response.new
+          end
+        end
+
+        format.js { render :template => 'responses/create', :locals => { :another => next_question? } } # run create.js.rjs
+        format.html { next_question?(true) }
         format.xml  { render :xml => @response, :status => :created, :location => @response }
       else
         format.html { render :action => "new" }
@@ -82,4 +92,37 @@ class ResponsesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+
+  #------
+  private
+
+
+  # checks to see if there is a next questio and
+  # returns false or the id of the next question.
+  # If forward is true then we'll forward instead
+  # accordingly.
+  def next_question?(forward = false)
+    e = Exam.find(params[:exam_id])
+    max = e.question.size
+    next_q = params[:response][:question_id].to_i+1
+
+    logger.info("q: #{next_q} == max: #{max}")
+    if next_q <= max
+      if forward
+        redirect_to ask_exam_question_url(e, next_q )
+      else
+        next_q
+      end
+    else
+      flash[:notice] = 'All done!'
+      if forward
+        redirect_to exams_url
+      else
+        false
+      end
+    end
+  end
+
+
 end

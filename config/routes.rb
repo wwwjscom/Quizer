@@ -5,7 +5,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :students
 
   map.resources :exams do |e|
-    e.resources :questions
+    #e.connect '/exams/:exam_id/questions/:id/ask', :controller => 'questions', :action => 'ask', :method => :any
+    e.resources :questions, :member => { :ask => :any }
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

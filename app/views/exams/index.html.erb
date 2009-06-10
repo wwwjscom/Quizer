@@ -12,6 +12,8 @@
     <td><%=h exam.time %></td>
     <td><%= link_to 'Show', exam %></td>
     <td><%= link_to 'Edit', edit_exam_path(exam) %></td>
+    <td><%= link_to 'Questions', exam_questions_path(exam) %></td>
+    <td><%= link_to 'Take Exam', ask_exam_question_path(exam, 1) %></td>
     <td><%= link_to 'Destroy', exam, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>

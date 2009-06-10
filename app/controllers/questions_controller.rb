@@ -1,4 +1,13 @@
 class QuestionsController < ApplicationController
+
+
+  def ask
+    @exam = Exam.find(params[:exam_id])
+    @question = Question.find(params[:id], :conditions => ['exam_id = ?', @exam])
+    @response = Response.new
+  end
+
+
   # GET /questions
   # GET /questions.xml
   def index
