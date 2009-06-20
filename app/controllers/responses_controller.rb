@@ -44,7 +44,7 @@ class ResponsesController < ApplicationController
 
     respond_to do |format|
       if @response.save
-        flash[:notice] = 'Response was successfully created.'
+        #flash[:notice] = 'Response was successfully created.'
 
         if request.xhr?
           if (next_q_id = next_question?)

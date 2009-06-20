@@ -1,3 +1,4 @@
+
 <h1>New response</h1>
 
 <% form_remote_for(@response) do |f| %>
@@ -13,6 +14,7 @@
   </p>
   <p>
     <%= f.submit 'Submit' %>
+    <% f.submit 'Submit', :complete => visual_effect(:highlight, "question", :duration => 3) %>
   </p>
 
 

@@ -1,6 +1,9 @@
 if another
   page.replace("question", :partial => 'questions/ask', :response => @response, :question => @question, :exam => @exam)
-  page.visual_effect :puff, 'question', :duration => 3
+  page.visual_effect :slideDown, 'saved', :duraion => 3
+  page.delay(3) do
+    page.visual_effect :slideUp, 'saved', :duraion => 3
+  end
 else
   page.redirect_to '/exams'
 end
