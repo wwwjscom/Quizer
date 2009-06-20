@@ -20,6 +20,6 @@ test:
 production:
   adapter: mysql
   database: quizer_production
-  username: root
-  password: root
+  username: quizer
+  password: supersecret
   server: localhost
