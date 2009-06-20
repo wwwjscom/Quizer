@@ -1,3 +1,5 @@
+<div id='saved' style="display:none; background:yellow; text-align:center"><div style="font-weight:bold; padding:10px; font-size:150%;">Reponse Saved</div></div>
+
 <div id='instructions' style="background:brown; color: white; padding: 10px;">
   <div>
     <h2>Instructions</h2>
@@ -14,7 +16,6 @@
 </div>
 You have until ~<%= (@exam.time).minutes.from_now.strftime("%I:%M") %>
 
-<div id='saved' style="display:none; background:yellow; text-align:center"><div style="font-weight:bold; padding:10px; font-size:150%;">Reponse Saved</div></div>
 
 <% if request.env['HTTP_HOST'] == 'localhost:3000' %>
 <% else %>
