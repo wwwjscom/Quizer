@@ -7,6 +7,11 @@ class CreateQuestions < ActiveRecord::Migration
 
       t.timestamps
     end
+    Question.create(:exam_id => 1, :question => 'Audio question', :answer => 'Various')
+    Question.create(:exam_id => 1, :question => 'Audio question', :answer => 'Various')
+    Question.create(:exam_id => 1, :question => 'Audio question', :answer => 'Various')
+    Question.create(:exam_id => 1, :question => 'Audio question', :answer => 'Various')
+    Question.create(:exam_id => 1, :question => 'Audio question', :answer => 'Various')
   end
 
   def self.down
