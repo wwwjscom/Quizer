@@ -1,4 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
+  map.my_name_is '/my_name_is', :controller => 'students', :action => 'my_name_is', :method => :post
   map.resources :responses
 
 

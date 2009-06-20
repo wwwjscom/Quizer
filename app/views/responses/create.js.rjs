@@ -6,5 +6,5 @@ if another
     page.visual_effect :slideUp, 'saved', :duraion => 3
   end
 else
-  page.redirect_to '/exams'
+  page.redirect_to '/'
 end

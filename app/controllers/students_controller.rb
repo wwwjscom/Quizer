@@ -1,4 +1,15 @@
 class StudentsController < ApplicationController
+
+
+  def my_name_is
+    s = Student.new
+    s[:name] = params[:name]
+    s.save
+    session[:student_id] = s.id
+    render nil 
+  end
+
+
   # GET /students
   # GET /students.xml
   def index

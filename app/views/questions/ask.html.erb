@@ -1,8 +1,19 @@
 <div id='saved' style="display:none; background:yellow; text-align:center"><div style="font-weight:bold; padding:10px; font-size:150%;">Reponse Saved</div></div>
 
+
 <div id='instructions' style="background:brown; color: white; padding: 10px;">
   <div>
     <h2>Instructions</h2>
+
+<li id="name">Click here and ender your name!</li>
+<input type="hidden" value="<%= form_authenticity_token() %>">
+<script type="text/javascript">
+  new Ajax.InPlaceEditor('name', '/my_name_is', {
+ callback: function(form, value) { return 'authenticity_token=<%= form_authenticity_token() %>&name='+escape(value)},
+savingText:'Saved'
+});
+</script>
+
     <li>Listen to the audio clip and spell the word as best you can</li>
     <li>The word will be repeated three times.  There will be a breif period for you to think and spell, then the next word will be played automatically</li>
     <li>After you are done spelling the word, hit enter or submit</li>
@@ -10,18 +21,18 @@
     <li>You will have approximatly <b><%= @exam.time %> minutes</b></li>
 
     <br />
-    When you are ready, click this link: <a href='http://127.0.0.1:3000/audio/m_0-50.m4a' onClick="Effect.SlideUp('instructions'); $('response_response').focus();">Begin Exam!</a><br />
+    When you are ready, click this link: 
+    <% if request.env['HTTP_HOST'] == 'localhost:3000' %>
+      <a href='http://127.0.0.1:3000/audio/m_0-5.m4a' onClick="Effect.SlideUp('instructions'); $('response_response').focus();">Begin Exam!</a>
+    <% else %>
+      <a href='http://<%= request.env['HTTP_HOST'] %>/audio/m_0-5.m4a'>Exam</a><br />
+    <% end %>
     <br />
   </div>
 </div>
 You have until ~<%= (@exam.time).minutes.from_now.strftime("%I:%M") %>
 
 
-<% if request.env['HTTP_HOST'] == 'localhost:3000' %>
-<% else %>
-  <a href='http://<%= request.env['HTTP_HOST'] %>/audio/izzo.mp3'>Relax</a><br />
-  <a href='http://<%= request.env['HTTP_HOST'] %>/audio/m_0-50.m4a'>Exam</a><br />
-<% end %>
 
 
 
