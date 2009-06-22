@@ -1,4 +1,5 @@
-<div id='saved' style="display:none; background:yellow; text-align:center"><div style="font-weight:bold; padding:10px; font-size:150%;">Reponse Saved<br /><%= @question.id %></div></div>
+<div id='answer' style="display:none; background:yellow; text-align:center">
+</div>
   
 
 
@@ -19,25 +20,19 @@ savingText:'Saved'
     <li>The words are foreign, you will not easily understand them</li>
     <li>The word will be repeated three times.  There will be a breif period for you to think and spell, then the next word will be played automatically</li>
     <li>After you are done spelling the word, hit enter or submit</li>
-    <li>Work quickly, there are no breaks/pausing</li>
     <li>You will have approximatly <b><%= @exam.time %> minutes</b></li>
     <li>Listen to these samples: <a target='_blank' href='/audio/vicki.mp3'>Vicki</a> and <a target='_blank' href='/audio/alex.mp3'>Alex</a></li>
 
     <br />
     When you are ready, select your proctor: 
-    <% if request.env['HTTP_HOST'] == 'localhost:3000' %>
-      <a href='http://127.0.0.1:3000/audio/m_0-5_vicki.m4a' onClick="Effect.SlideUp('instructions'); Effect.Appear('timer'); $('response_response').focus();">Vicki!</a> or 
-      <a href='http://127.0.0.1:3000/audio/m_0-5_alex.m4a' onClick="Effect.SlideUp('instructions'); Effect.Appear('timer'); $('response_response').focus();">Alex!</a>
-    <% else %>
-      <a href='http://<%= request.env['HTTP_HOST'] %>/audio/m_0-5_vicki.m4a' onClick="Effect.SlideUp('instructions'); Effect.Appear('timer'); $('response_response').focus();">Vicki!</a> or 
-      <a href='http://<%= request.env['HTTP_HOST'] %>/audio/m_0-5_alex.m4a' onClick="Effect.SlideUp('instructions'); Effect.Appear('timer'); $('response_response').focus();">Alex!</a>
-    <% end %>
+    <a target='_blank' href='/audio/m_0-5_vicki.mp3' onClick="Effect.SlideUp('instructions'); Effect.Appear('timer'); $('response_response').focus();">Vicki!</a> or 
+    <a target='_blank' href='/audio/m_0-5_alex.mp3' onClick="Effect.SlideUp('instructions'); Effect.Appear('timer'); $('response_response').focus();">Alex!</a>
     <br />
   </div>
 </div>
 
 <div style="display:none;" id='timer'>
-You have until ~<%= (@exam.time).minutes.from_now.strftime("%I:%M") %> | Can't hear the audio?  Play <a target='_blank' href='/audio/m_0-5_vicki.mp3'>Vicki</a> or <a target='_blank' href='/audio/m_0-5_alex.mp3'>Alex</a>
+You have until ~<%= (@exam.time).minutes.from_now.strftime("%I:%M") %>
 
 
 

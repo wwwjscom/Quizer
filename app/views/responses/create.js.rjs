@@ -1,9 +1,10 @@
 if another
   #page.replace("question", :partial => 'questions/ask', :response => @response, :question => @question, :exam => @exam)
   page.replace_html("question", :partial => 'questions/ask', :response => @response, :question => @question, :exam => @exam, :prev_question => @prev_question)
-  page.visual_effect :slideDown, 'saved', :duraion => 3
+  page.replace_html('answer', :partial => 'questions/answer', :question => @question, :prev_question => @prev_question)
+  page.visual_effect :slideDown, 'answer', :duraion => 3
   page.delay(3) do
-    page.visual_effect :slideUp, 'saved', :duraion => 3
+    page.visual_effect :slideUp, 'answer', :duraion => 3
   end
 else
   page.redirect_to '/'

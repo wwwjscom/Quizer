@@ -4,8 +4,9 @@ class QuestionsController < ApplicationController
   def ask
     @exam = Exam.find(params[:exam_id])
     @question = Question.find(params[:id], :conditions => ['exam_id = ?', @exam])
-    @prev_question = Question.find((params[:id].to_i)-1, :conditions => ['exam_id = ?', @exam]) unless @question.id == 1
+            @prev_question = Question.find(@question.id-1, :conditions => ['exam_id = ?', @exam]) unless @question.id == 1
     @response = Response.new
+            logger.warn('WTF')
   end
 
 

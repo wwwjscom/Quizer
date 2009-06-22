@@ -50,6 +50,8 @@ class ResponsesController < ApplicationController
           if (next_q_id = next_question?)
             @exam = Exam.find(params[:exam_id])
             @question = Question.find(next_q_id, :conditions => ['exam_id = ?', @exam])
+            @prev_question = Question.find(@question.id-1, :conditions => ['exam_id = ?', @exam]) unless @question.id == 1
+            logger.warn('HERE')
             @response = Response.new
           end
         end
