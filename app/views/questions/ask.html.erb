@@ -25,8 +25,8 @@ savingText:'Saved'
 
     <br />
     When you are ready, select your proctor: 
-    <a target='_blank' href='/audio/m_0-5_vicki.mp3' onClick="Effect.SlideUp('instructions'); Effect.Appear('timer'); $('response_response').focus();">Vicki!</a> or 
-    <a target='_blank' href='/audio/m_0-5_alex.mp3' onClick="Effect.SlideUp('instructions'); Effect.Appear('timer'); $('response_response').focus();">Alex!</a>
+    <a target='_blank' href='/audio/<%= @exam.name.downcase %>_vicki.mp3' onClick="Effect.SlideUp('instructions'); Effect.Appear('timer'); $('response_response').focus();">Vicki</a> or 
+    <a target='_blank' href='/audio/<%= @exam.name.downcase %>_alex.mp3' onClick="Effect.SlideUp('instructions'); Effect.Appear('timer'); $('response_response').focus();">Alex</a>
     <br />
   </div>
 </div>
