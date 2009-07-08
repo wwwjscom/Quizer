@@ -6,7 +6,7 @@ class CreateExams < ActiveRecord::Migration
 
       t.timestamps
     end
-    Exam.create(:name => 'M_0-5', :time => 1)
+    Exam.create(:name => 'M_0-50', :time => 11)
   end
 
   def self.down
