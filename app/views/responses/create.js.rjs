@@ -11,5 +11,5 @@ if another
   page.visual_effect :shake, 'score'
 
 else
-  page.redirect_to '/'
+  page.redirect_to '/exams/thanks'
 end

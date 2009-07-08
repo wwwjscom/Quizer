@@ -5,6 +5,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :students
 
+  map.thanks '/exams/thanks', :controller => 'exams', :action => 'thanks', :method => :get
   map.resources :exams do |e|
     #e.connect '/exams/:exam_id/questions/:id/ask', :controller => 'questions', :action => 'ask', :method => :any
     e.resources :questions, :member => { :ask => :any }

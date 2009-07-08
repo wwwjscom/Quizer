@@ -1,4 +1,9 @@
 class ExamsController < ApplicationController
+
+  # GET /exams/thanks
+  def thanks
+  end
+
   # GET /exams
   # GET /exams.xml
   def index
