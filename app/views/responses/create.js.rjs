@@ -6,6 +6,10 @@ if another
   page.delay(3) do
     page.visual_effect :slideUp, 'answer', :duraion => 3
   end
+
+  page.replace_html('score', :partial => 'responses/score')
+  page.visual_effect :shake, 'score'
+
 else
   page.redirect_to '/'
 end

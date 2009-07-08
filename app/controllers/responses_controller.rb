@@ -52,6 +52,10 @@ class ResponsesController < ApplicationController
             @question = Question.find(next_q_id, :conditions => ['exam_id = ?', @exam])
             @prev_question = Question.find(@question.id-1, :conditions => ['exam_id = ?', @exam]) unless @question.id == 1
             logger.warn('HERE')
+
+            # score the response
+            update_scores(@response.response, @prev_question.answer)
+
             @response = Response.new
           end
         end

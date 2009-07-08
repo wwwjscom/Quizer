@@ -32,16 +32,17 @@ savingText:'Saved'
 </div>
 
 <div style="display:none;" id='timer'>
-You have until ~<%= (@exam.time).minutes.from_now.strftime("%I:%M") %>
+  You have until ~<%= (@exam.time).minutes.from_now.strftime("%I:%M") %>
 
 
 
 
-<div id='question'>
-  <%= render :partial => 'ask' %>
-</div>
+  <div style="float:left;" id='question'>
+    <%= render :partial => 'ask' %>
+  </div>
 
-<div id='answer'>
-</div>
+  <div style="float:right; background-color:#CCFFCC; padding: 15px; height: 50px; width:200px;" id='score'>
+    <%= render :partial => 'responses/score' %>
+  </div>
 
 </div>
