@@ -24,11 +24,16 @@ savingText:'Saved'
     <li>Listen to these samples: <a target='_blank' href='/audio/vicki.mp3'>Vicki</a> and <a target='_blank' href='/audio/alex.mp3'>Alex</a></li>
 
     <br />
-    When you are ready, select your proctor: 
-    <a target='_blank' href='/audio/<%= @exam.name.downcase %>_vicki.mp3' onClick="Effect.SlideUp('instructions'); Effect.Appear('timer'); $('response_response').focus();">Vicki</a> or 
-    <a target='_blank' href='/audio/<%= @exam.name.downcase %>_alex.mp3' onClick="Effect.SlideUp('instructions'); Effect.Appear('timer'); $('response_response').focus();">Alex</a>
+    <a href='#' onClick="Effect.SlideUp('instructions'); Effect.Appear('audio'); Effect.Appear('timer'); $('response_response').focus();">Lets do this thing!</a>
     <br />
   </div>
+</div>
+
+<br />
+
+<div style="display:none;" id="audio">
+  Alex: <audio controls="true" autobuffer="true" src="/audio/<%= @exam.name.downcase %>_alex.ogg">Get a real browser</audio> - OR - 
+  Vicki: <audio controls="true" autobuffer="true" src="/audio/<%= @exam.name.downcase %>_vicki.ogg">Get a real browser</audio>
 </div>
 
 <div style="display:none;" id='timer'>
@@ -46,3 +51,5 @@ savingText:'Saved'
   </div>
 
 </div>
+
+<audio src="/audio/<%= @exam.name.downcase %>_alex.ogg">Get a real browser</audio>
