@@ -21,7 +21,6 @@ savingText:'Saved'
     <li>The word will be repeated three times.  There will be a breif period for you to think and spell, then the next word will be played automatically</li>
     <li>After you are done spelling the word, hit enter or submit</li>
     <li>You will have approximatly <b><%= @exam.time %> minutes</b></li>
-    <li>Listen to these samples: <a target='_blank' href='/audio/vicki.mp3'>Vicki</a> and <a target='_blank' href='/audio/alex.mp3'>Alex</a></li>
 
     <br />
     <a href='#' onClick="Effect.SlideUp('instructions'); Effect.Appear('audio'); Effect.Appear('timer'); $('response_response').focus();">Lets do this thing!</a>
@@ -32,6 +31,7 @@ savingText:'Saved'
 <br />
 
 <div style="display:none;" id="audio">
+  <i>Select your proctor:</i><br /><br />
   Alex: <audio controls="true" autobuffer="true" src="/audio/<%= @exam.name.downcase %>_alex.ogg">Get a real browser</audio> - OR - 
   Vicki: <audio controls="true" autobuffer="true" src="/audio/<%= @exam.name.downcase %>_vicki.ogg">Get a real browser</audio>
 </div>
